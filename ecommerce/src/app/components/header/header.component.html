@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">MiniStore</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/"
+            >PRODUCTS</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/"
+            >BEST SALE</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#footer"
+            >CONTACT</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <li
+      *ngIf="!userIsAuthenticated; else userIsLoggedIn"
+      class="nav-item d-flex p-2"
+      style="cursor: pointer"
+      routerLink="/login-page"
+    >
+      <i style="cursor: pointer" class="fa-solid fa-user me-auto mt-1"></i>
+    </li>
+
+    <ng-template #userIsLoggedIn>
+      <li class="nav-item d-flex p-2" style="cursor: pointer">
+        <i style="cursor: pointer" class="fa-solid fa-user me-auto mt-1"></i>
+        {{ userName | async }}
+      </li>
+    </ng-template>
+
+    <li
+      class="nav-item d-flex p-2"
+      style="cursor: pointer"
+      routerLink="/cart-page"
+    >
+      <i style="cursor: pointer" class="fas fa-shopping-cart me-auto mt-1"></i
+      >&nbsp; {{ cartItems }}
+    </li>
+  </div>
+</nav>

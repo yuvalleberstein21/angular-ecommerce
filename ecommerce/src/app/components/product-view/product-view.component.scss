@@ -1,0 +1,138 @@
+#billboard .swiper-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+.swiper-icon.swiper-arrow svg {
+  fill: var(--light-gray-color);
+}
+.swiper-icon.swiper-arrow:hover svg,
+.swiper-icon.swiper-arrow:focus svg {
+  fill: var(--primary-color);
+}
+#billboard .swiper-arrow.swiper-arrow-prev {
+  left: 0;
+}
+#billboard .swiper-arrow.swiper-arrow-next {
+  right: 0;
+}
+
+@media only screen and (max-width: 767px) {
+  #billboard .banner-content {
+    margin-top: 210px;
+  }
+  #billboard .image-holder {
+    margin-top: -390px;
+    opacity: 0.3;
+  }
+  #billboard .swiper-arrow {
+    top: 400px;
+  }
+}
+
+// company
+@media only screen and (max-width: 991px) {
+  #company-services .icon-box {
+    flex-wrap: wrap;
+  }
+}
+.icon-box .icon-box-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--primary-color);
+}
+
+/* 4. Product
+/*----------------------------------------------*/
+.product-store .product-card .cart-concern {
+  bottom: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+}
+.product-store .product-card:hover .cart-concern {
+  bottom: 90px;
+  opacity: 1;
+}
+.product-card .cart-concern svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--light-color);
+  margin-left: 9px;
+}
+.product-card .card-detail span {
+  font-size: 1.5em;
+}
+.img-fluid {
+  height: 400px;
+}
+
+@media only screen and (max-width: 575px) {
+  .product-store .product-card .card-detail {
+    padding: 10px;
+  }
+}
+.btn-shop:hover {
+  background-color: #72aec8;
+  color: white;
+  border: none;
+}
+.item-price {
+  color: #72aec8;
+}
+.card-title {
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: 0.3s color ease-out;
+  font-size: 18px;
+  font-weight: 600;
+}
+.image-holder img {
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.image-holder-skincare img {
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+/*------------Swiper Pagination -----------*/
+.product-store
+  .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 35px;
+}
+.swiper-pagination span.swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+}
+
+// SINGLE IMAGE
+.text-content h3 {
+  font-size: 38px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-content h2 {
+  font-size: 50px;
+}
+
+.icon-box-icon {
+  color: #72aec8 !important;
+}
+.display-header h2 {
+  font-size: 30px;
+  color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
+  font-weight: 400;
+}
+.btn-normal {
+  border-bottom: 2px solid #72aec8 !important;
+}

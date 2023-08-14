@@ -1,0 +1,80 @@
+<ng-container *ngIf="showProduct.length != 0">
+  <div class="card mt-5">
+    <div class="row">
+      <div class="col-md-8 cart">
+        <div class="title">
+          <div class="row">
+            <div class="col">
+              <h4><b>Shopping Cart</b></h4>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row border-top border-bottom"
+          *ngFor="let item of showProduct; let i = index"
+        >
+          <div class="row main align-items-center">
+            <div class="col-2">
+              <img class="img-fluid" [src]="item.images[0]" />
+            </div>
+            <div class="col">
+              <div class="row text-muted">{{ item.title }}</div>
+              <div class="row">{{ item.category }}</div>
+            </div>
+            <div class="col">
+              <button>-</button><a class="border">1</a><button>+</button>
+            </div>
+            <div class="col">
+              {{ item.price | currency }}
+
+              <span (click)="deleteItem(item)"
+                ><i class="fas fa-trash"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="back-to-shop">
+          <a routerLink="/">&leftarrow;</a
+          ><span class="text-muted">Back to shop</span>
+        </div>
+      </div>
+      <div class="col-md-4 summary">
+        <div>
+          <h5><b>Summary</b></h5>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col" style="padding-left: 0"></div>
+          <div class="col text-right">{{ totalAmout | currency }}</div>
+        </div>
+        <form>
+          <p>SHIPPING</p>
+          <select>
+            <option class="text-muted">Standard-Delivery- &dollar;5.00</option>
+          </select>
+          <div
+            class="row"
+            style="border-top: 1px solid rgba(0, 0, 0, 0.1); padding: 2vh 0"
+          >
+            <div class="col">TOTAL PRICE</div>
+            <div class="col text-right">{{ totalAmout | currency }}</div>
+          </div>
+        </form>
+
+        <button class="btn" routerLink="/checkout">CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<!-- Empty cart  -->
+<ng-container *ngIf="showProduct.length === 0">
+  <div class="card card-empty">
+    <div class="center">
+      <h4>Your Cart is Empty</h4>
+      <h6>Please Add Item</h6>
+      <button routerLink="/" class="btn btn-dark">Shop Now</button>
+    </div>
+  </div>
+</ng-container>

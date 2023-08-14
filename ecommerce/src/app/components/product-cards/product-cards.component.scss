@@ -1,0 +1,49 @@
+/* 4. Product
+/*----------------------------------------------*/
+.product-store .product-card .cart-concern {
+  bottom: 7rem !important;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+}
+.product-store .product-card:hover .cart-concern {
+  bottom: 7rem;
+  opacity: 1;
+}
+
+.product-card .card-detail span {
+  font-size: 1.5em;
+}
+
+@media only screen and (max-width: 575px) {
+  .product-store .product-card .card-detail {
+    padding: 10px;
+  }
+}
+.btn-shop:hover {
+  background-color: #72aec8;
+  color: white;
+  border: none;
+}
+.item-price {
+  color: #72aec8;
+}
+.card-title {
+  color: var(--dark-color);
+  text-decoration: none;
+  transition: 0.3s color ease-out;
+  font-size: 18px;
+  font-weight: 600;
+}
+.image-holder img {
+  border-radius: 5%;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+  background-repeat: no-repeat;
+}
