@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const con = require('./DB/database');
 const app = express();
 
 
@@ -8,11 +9,18 @@ app.use(cors({
     origin: 'http://localhost:4200',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE',]
 }));
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+
+
+app.get('/api/getAllProducts', async (req, res) => {
+    await con.query('SELECT p.id, p.title, p.image, p.images, p.description, p.price, p.stock, c.title AS category FROM products p JOIN categories c ON p.cat_id = c.id;', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
 })
 
 app.use((req, res, next) => {

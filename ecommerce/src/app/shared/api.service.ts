@@ -13,7 +13,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   public getProduct() {
-    return this.http.get<Product[]>('https://dummyjson.com/products');
+    return this.http.get<Product[]>('http://localhost:5001/api/getAllProducts');
   }
 
   public getProductById(id: string) {
