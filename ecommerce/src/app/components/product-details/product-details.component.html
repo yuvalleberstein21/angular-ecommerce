@@ -1,49 +1,81 @@
-<!-- Single product display -->
-<div class="container">
-  <div class="row product-detail">
-    <div class="col-sm-3">
-      <img class="product-img" [src]="productData.images[0]" alt="" />
-      <div>
-        <button class="btn btn-primary">Buy Now</button>&nbsp;
-        <button
-          (click)="addToCart(productData)"
-          *ngIf="showAdd"
-          class="btn btn-success"
-        >
-          Add to Cart
-        </button>
-        &nbsp;
-        <button
-          (click)="removeItem(productData)"
-          *ngIf="showRemove"
-          class="btn btn-info"
-        >
-          Remove Item
-        </button>
-      </div>
-    </div>
+<div class="container mt-5 mb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10" *ngFor="let item of productData">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="images p-3">
+              <div class="text-center p-4">
+                <img class="main-image" [src]="item.image" width="250" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="product p-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                  <i class="fa fa-long-arrow-left"></i>
+                  <span class="ml-1" style="cursor: pointer" routerLink="/"
+                    >Back</span
+                  >
+                </div>
+                <i class="fa fa-shopping-cart text-muted"></i>
+              </div>
+              <br />
+              <div class="mt-4 mb-3">
+                <span class="text-uppercase text-muted brand">{{
+                  item.title
+                }}</span>
+                <div class="price d-flex flex-row align-items-center">
+                  <br />
+                  <br />
+                  <div class="ml-2">
+                    <span>{{ item.price | currency }}</span>
+                  </div>
+                </div>
+              </div>
+              <p class="about">
+                {{ item.description }}
+              </p>
 
-    <!-- Right side  -->
-    <div class="col-sm-8">
-      <div>
-        <h1>{{ productData.title }}</h1>
-        <p style="color: green">Special Price</p>
-        <h3>Price: {{ productData.price | currency }}</h3>
-        <strong>Category: &nbsp;{{ productData.category }}</strong
-        ><br />
-        <strong>Description:</strong><br />
-        <p>
-          {{ productData.description }}
-        </p>
-        <p style="color: green">
-          Discount: {{ productData.discountPercentage }} %
-        </p>
-        <strong>In Stock: {{ productData.stock }} Units left</strong>
-        <br />
-        <button routerLink="/" class="btn btn-warning text-light mt-2">
-          BACK
-        </button>
+              <div class="cart mt-4 align-items-center">
+                <button
+                  class="btn btn-blue text-uppercase mr-2 px-4"
+                  (click)="addToCart(item)"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<section
+  id="mobile-products"
+  class="product-store position-relative padding-large no-padding-top mt-5 p-4"
+>
+  <div class="container">
+    <div class="row">
+      <div class="display-header d-flex justify-content-between pb-3">
+        <h2 class="display-7 text-dark text-uppercase">Similar Products</h2>
+        <div class="btn-right">
+          <a class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
+        </div>
+      </div>
+
+      <div class="swiper product-swiper">
+        <div class="swiper-wrapper">
+          <div class="row" *ngIf="similarProducts">
+            <div class="col-md-3" *ngFor="let item of similarProducts">
+              <app-product-cards [item]="item"></app-product-cards>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

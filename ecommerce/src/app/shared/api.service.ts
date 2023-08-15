@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   public getProductById(id: string) {
-    return this.http.get<Product>(`https://dummyjson.com/products/${id}`);
+    return this.http.get<Product>(`http://localhost:5001/api/getProduct/${id}`);
   }
 
   public addToCart(data: Product) {
@@ -30,6 +30,7 @@ export class ApiService {
     } else {
       this.cartItemList.push(data);
       this.productList.next(this.cartItemList);
+      sessionStorage.setItem('cart', data.title);
     }
   }
 

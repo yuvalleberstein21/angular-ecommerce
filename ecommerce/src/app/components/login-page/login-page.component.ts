@@ -30,7 +30,7 @@ export class LoginPageComponent {
       this.user = user;
       this.loggedIn = user != null;
       if (user) {
-        localStorage.setItem('user', JSON.stringify(user));
+        sessionStorage.setItem('user', JSON.stringify(user));
         this.userIsAuthenticated.next(true); // Notify authentication state change
         this.userName.next(user.name); // Update user name
         this.router.navigate(['/']);

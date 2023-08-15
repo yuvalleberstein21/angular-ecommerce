@@ -9,7 +9,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { GuardService } from './shared/guard.service';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: ProductViewComponent,

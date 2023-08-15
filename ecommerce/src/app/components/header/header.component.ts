@@ -21,7 +21,9 @@ export class HeaderComponent implements OnInit {
       this.cartItems = res.length;
     });
 
-    const isAuthenticated = JSON.parse(localStorage.getItem('user') || 'false');
+    const isAuthenticated = JSON.parse(
+      sessionStorage.getItem('user') || 'false'
+    );
     if (isAuthenticated) {
       this.userIsAuthenticated.next(true);
       this.userName.next(isAuthenticated.name);

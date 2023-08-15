@@ -24,6 +24,7 @@ import {
   GoogleLoginProvider,
   GoogleSigninButtonModule,
 } from '@abacritt/angularx-social-login';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [

@@ -21,7 +21,18 @@ app.get('/api/getAllProducts', async (req, res) => {
         if (err) throw err;
         res.send(result);
     });
-})
+});
+
+app.get('/api/getProduct/:id', async (req, res) => {
+    const id = req.params.id;
+    await con.query(`SELECT products.id, products.title, products.image, products.images, products.description, products.price, products.stock, categories.title AS category
+    FROM products
+    JOIN categories ON products.cat_id = categories.id
+    WHERE products.id = ${id};`, (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+});
 
 app.use((req, res, next) => {
     res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');

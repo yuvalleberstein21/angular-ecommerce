@@ -24,3 +24,9 @@
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (min-width: 991px) {
+  .collapse {
+    background: none !important;
+  }
+}

@@ -9,7 +9,7 @@ export class GuardService implements CanActivate {
 
   canActivate(): boolean {
     // Check your authentication logic here
-    const isAuthenticated = localStorage.getItem('user');
+    const isAuthenticated = sessionStorage.getItem('user');
 
     if (isAuthenticated) {
       return true; // Allow access to the route

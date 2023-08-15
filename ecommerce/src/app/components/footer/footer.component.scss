@@ -4,3 +4,9 @@
 .menu-item {
   padding: 1.2rem 0;
 }
+
+@media only screen and (min-width: 991px) {
+  .menu-item {
+    padding: 0;
+  }
+}
