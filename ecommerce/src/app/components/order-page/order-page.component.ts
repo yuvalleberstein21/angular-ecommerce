@@ -9,11 +9,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
   styleUrls: ['./order-page.component.scss'],
 })
 export class OrderPageComponent implements OnInit {
-  constructor(
-    private apiService: ApiService,
-    private router: Router,
-    private cartService: CartService
-  ) {}
+  constructor(private router: Router, private cartService: CartService) {}
 
   public totalAmount: number = 0;
 

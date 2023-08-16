@@ -65,11 +65,9 @@ export class ProductViewComponent implements OnInit {
     });
     return skincare.slice(0, 4);
   }
-
   addToCart(item: Product) {
     this.cartService.addToCart(item);
   }
-
   removeItem(item: Product) {
     this.cartService.removeFromCart(item.id);
   }

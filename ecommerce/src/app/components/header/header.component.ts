@@ -15,10 +15,7 @@ export class HeaderComponent implements OnInit {
   );
   userName: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(
-    private apiService: ApiService,
-    private cartService: CartService
-  ) {
+  constructor(private cartService: CartService) {
     this.cartService.getCartObservable().subscribe((res) => {
       this.cartQuantity = res.totalCount;
     });

@@ -19,11 +19,7 @@ export class LoginPageComponent {
   );
   userName: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(
-    private authService: SocialAuthService,
-    private router: Router,
-    private apiService: ApiService
-  ) {}
+  constructor(private authService: SocialAuthService, private router: Router) {}
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {

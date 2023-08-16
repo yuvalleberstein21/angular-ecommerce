@@ -11,10 +11,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 export class ProductCardsComponent {
   @Input() item!: Product;
 
-  constructor(
-    private apiService: ApiService,
-    private cartService: CartService
-  ) {}
+  constructor(private cartService: CartService) {}
 
   addToCart(item: Product) {
     this.cartService.addToCart(item);

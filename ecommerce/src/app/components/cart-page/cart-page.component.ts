@@ -17,11 +17,7 @@ export class CartPageComponent implements OnInit {
   public counter: any | number = 1;
   myForm: FormGroup | any;
 
-  constructor(
-    private apiService: ApiService,
-    private cartService: CartService,
-    private renderer: Renderer2
-  ) {}
+  constructor(private cartService: CartService, private renderer: Renderer2) {}
   ngOnInit(): void {
     this.renderer.setProperty(document.body, 'scrollTop', 0);
     this.cartService.getCartObservable().subscribe((res) => {
@@ -43,10 +39,6 @@ export class CartPageComponent implements OnInit {
   deleteItem(item: CartItem) {
     this.cartService.removeFromCart(item.product.id);
   }
-
-  // emptyCart() {
-  //   this.apiService.removeAllItems();
-  // }
 
   cancel() {
     this.addressForm = false;
