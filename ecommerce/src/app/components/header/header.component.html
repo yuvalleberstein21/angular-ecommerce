@@ -50,7 +50,7 @@
             class="nav-link active"
             style="font-size: 15px; font-weight: 500"
             aria-current="page"
-            href="#footer"
+            href="#contact"
             >CONTACT</a
           >
         </li>
@@ -68,6 +68,7 @@
         <li
           class="nav-item d-flex p-2"
           style="cursor: pointer; font-size: 15px; font-weight: 500"
+          routerLink="/login-page"
         >
           <i style="cursor: pointer" class="fa-solid fa-user me-auto mt-1"></i>
           {{ userName | async }}
@@ -80,7 +81,7 @@
         routerLink="/cart-page"
       >
         <i style="cursor: pointer" class="fas fa-shopping-cart me-auto mt-1"></i
-        >&nbsp; {{ cartItems }}
+        >&nbsp; {{ cartQuantity }}
       </li>
     </div>
   </div>

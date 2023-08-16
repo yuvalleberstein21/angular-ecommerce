@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/api.service';
-import { Product } from './productModal';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Product } from '../../shared/models/productModal';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-product-view',
@@ -18,7 +19,10 @@ export class ProductViewComponent implements OnInit {
     'skincare',
   ];
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.displayProduct();
@@ -63,10 +67,10 @@ export class ProductViewComponent implements OnInit {
   }
 
   addToCart(item: Product) {
-    this.apiService.addToCart(item);
+    this.cartService.addToCart(item);
   }
 
   removeItem(item: Product) {
-    this.apiService.removeFromCart(item);
+    this.cartService.removeFromCart(item.id);
   }
 }

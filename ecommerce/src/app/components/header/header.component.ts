@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ApiService } from 'src/app/shared/api.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -8,19 +9,22 @@ import { ApiService } from 'src/app/shared/api.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public cartItems: number = 0;
+  cartQuantity = 0;
   userIsAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   userName: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private cartService: CartService
+  ) {
+    this.cartService.getCartObservable().subscribe((res) => {
+      this.cartQuantity = res.totalCount;
+    });
+  }
 
   ngOnInit(): void {
-    this.apiService.products().subscribe((res) => {
-      this.cartItems = res.length;
-    });
-
     const isAuthenticated = JSON.parse(
       sessionStorage.getItem('user') || 'false'
     );

@@ -7,7 +7,7 @@ import { OrderPageComponent } from './components/order-page/order-page.component
 import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
-import { GuardService } from './shared/guard.service';
+import { GuardService } from './shared/services/guard.service';
 
 export const routes: Routes = [
   {
@@ -25,6 +25,7 @@ export const routes: Routes = [
   {
     path: 'order-page',
     component: OrderPageComponent,
+    canActivate: [GuardService],
   },
   {
     path: 'checkout',

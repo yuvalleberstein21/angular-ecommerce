@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { ApiService } from 'src/app/shared/api.service';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-login-page',

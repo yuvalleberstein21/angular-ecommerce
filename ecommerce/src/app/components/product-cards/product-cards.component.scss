@@ -1,18 +1,72 @@
 /* 4. Product
 /*----------------------------------------------*/
 .product-store .product-card .cart-concern {
-  bottom: 7rem !important;
   width: 100%;
-
   display: flex;
   justify-content: center;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.3s ease-out;
   opacity: 0;
 }
+.btn {
+  --color: #72aec8;
+  --color2: white;
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 0.3px solid white;
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  background: #efefef;
+}
+
+.btn::after,
+.btn::before {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: 0.5s ease-out;
+  background-color: var(--color);
+}
+
+.btn::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btn:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btn:hover {
+  color: var(--color2);
+}
+
+.btn:active {
+  filter: brightness(0.7);
+  transform: scale(0.98);
+}
+
 .product-store .product-card:hover .cart-concern {
-  bottom: 7rem;
+  bottom: 7rem !important;
   opacity: 1;
 }
 
@@ -25,11 +79,7 @@
     padding: 10px;
   }
 }
-.btn-shop:hover {
-  background-color: #72aec8;
-  color: white;
-  border: none;
-}
+
 .item-price {
   color: #72aec8;
 }
@@ -46,4 +96,9 @@
   height: 300px;
   width: 100%;
   background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 768px) {
+  .product-card {
+  }
 }

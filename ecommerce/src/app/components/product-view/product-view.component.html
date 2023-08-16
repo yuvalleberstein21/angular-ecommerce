@@ -6,7 +6,7 @@
           <div class="row d-flex align-items-center">
             <div class="col-md-6">
               <div class="banner-content">
-                <h1 class="display-2 text-uppercase text-dark pb-5">
+                <h1 class="text-uppercase text-dark pb-5">
                   Your Products Are Great.
                 </h1>
                 <a
@@ -103,7 +103,10 @@
       <div class="swiper product-swiper">
         <div class="swiper-wrapper">
           <div class="row">
-            <div class="col-md-3" *ngFor="let item of filteredSmartphones">
+            <div
+              class="col-lg-3 col-md-4"
+              *ngFor="let item of filteredSmartphones"
+            >
               <app-product-cards [item]="item"></app-product-cards>
             </div>
           </div>
@@ -130,7 +133,7 @@
       <div class="swiper product-swiper">
         <div class="swiper-wrapper">
           <div class="row">
-            <div class="col-md-3" *ngFor="let item of filteredLaptops">
+            <div class="col-lg-3 col-md-4" *ngFor="let item of filteredLaptops">
               <app-product-cards [item]="item"></app-product-cards>
             </div>
           </div>
@@ -153,7 +156,7 @@
   <div class="row d-flex flex-wrap align-items-center">
     <div class="col-md-6 col-sm-12">
       <div class="text-content offset-4 padding-medium">
-        <h3>10% off</h3>
+        <h3 style="color: rgb(207, 2, 2); font-weight: 600">10% off</h3>
         <h2 class="display-2 pb-5 text-uppercase text-dark">New year sale</h2>
         <a
           href="shop.html"
@@ -184,7 +187,10 @@
       <div class="swiper product-swiper">
         <div class="swiper-wrapper">
           <div class="row">
-            <div class="col-md-3" *ngFor="let item of filteredHomeDecoration">
+            <div
+              class="col-lg-3 col-md-4"
+              *ngFor="let item of filteredHomeDecoration"
+            >
               <app-product-cards [item]="item"></app-product-cards>
             </div>
           </div>
@@ -255,7 +261,10 @@
       <div class="swiper product-swiper">
         <div class="swiper-wrapper">
           <div class="row">
-            <div class="col-md-3" *ngFor="let item of filteredSkincare">
+            <div
+              class="col-lg-3 col-md-4"
+              *ngFor="let item of filteredSkincare"
+            >
               <app-product-cards [item]="item"></app-product-cards>
             </div>
           </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from 'src/app/shared/api.service';
-import { Product } from '../product-view/productModal';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Product } from '../../shared/models/productModal';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -18,7 +19,8 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -48,12 +50,12 @@ export class ProductDetailsComponent implements OnInit {
   addToCart(productData: Product) {
     this.showAdd = false;
     this.showRemove = true;
-    this.apiService.addToCart(productData);
+    this.cartService.addToCart(productData);
   }
 
   removeItem(productData: Product) {
     this.showAdd = true;
     this.showRemove = false;
-    this.apiService.removeFromCart(productData);
+    this.cartService.removeFromCart(productData.id);
   }
 }

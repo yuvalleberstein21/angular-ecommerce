@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../product-view/productModal';
-import { ApiService } from 'src/app/shared/api.service';
+import { Product } from '../../shared/models/productModal';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-product-cards',
@@ -10,9 +11,12 @@ import { ApiService } from 'src/app/shared/api.service';
 export class ProductCardsComponent {
   @Input() item!: Product;
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private cartService: CartService
+  ) {}
 
   addToCart(item: Product) {
-    this.apiService.addToCart(item);
+    this.cartService.addToCart(item);
   }
 }

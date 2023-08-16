@@ -21,8 +21,7 @@ body {
 }
 .card {
   margin: auto;
-  max-width: 950px;
-  width: 90%;
+  max-width: 1000px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 1rem;
   border: transparent;
@@ -32,11 +31,33 @@ body {
     margin: 3vh auto;
   }
 }
+
 .cart {
   background-color: #fff;
   padding: 4vh 5vh;
   border-bottom-left-radius: 1rem;
   border-top-left-radius: 1rem;
+}
+
+.minus-btn {
+  border-radius: 5px;
+  border: none;
+  background: rgba(0, 0, 0, 0.499);
+  color: white;
+}
+
+.plus-btn {
+  border-radius: 5px;
+
+  border: none;
+  background: rgba(0, 0, 0, 0.499);
+  color: white;
+}
+.number-input {
+  margin: 2px;
+  border: 1px solid snow;
+  font-weight: 500;
+  outline: none;
 }
 @media (max-width: 767px) {
   .cart {
@@ -56,6 +77,28 @@ body {
   .summary {
     border-top-right-radius: unset;
     border-bottom-left-radius: 1rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .plus-btn {
+    display: flex;
+    justify-content: center;
+    padding: 0 4px;
+    align-items: center;
+  }
+  .minus-btn {
+    display: flex;
+    justify-content: center;
+    padding: 0px 6px;
+    align-items: center;
+  }
+  .number-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
   }
 }
 .summary .col-2 {
@@ -119,6 +162,62 @@ input {
 }
 input:focus::-webkit-input-placeholder {
   color: transparent;
+}
+.button {
+  width: 30px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  width: 50px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.button:hover .svgIcon {
+  width: 50px;
+  transition-duration: 0.3s;
+  transform: translateY(60%);
+  display: none;
+}
+
+.button::before {
+  position: absolute;
+  top: -20px;
+  content: "Delete";
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: 0.3s;
 }
 .btn {
   background-color: #000;

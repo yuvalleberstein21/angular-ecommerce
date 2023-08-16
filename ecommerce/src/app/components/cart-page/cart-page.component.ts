@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/api.service';
-import { Product } from '../product-view/productModal';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { Product } from '../../shared/models/productModal';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { CartItem } from 'src/app/shared/models/CartItem';
 
 @Component({
   selector: 'app-cart-page',
@@ -15,11 +17,18 @@ export class CartPageComponent implements OnInit {
   public counter: any | number = 1;
   myForm: FormGroup | any;
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private cartService: CartService,
+    private renderer: Renderer2
+  ) {}
   ngOnInit(): void {
-    this.apiService.products().subscribe((res) => {
-      this.showProduct = res;
-      this.totalAmout = this.apiService.calculatePrice();
+    this.renderer.setProperty(document.body, 'scrollTop', 0);
+    this.cartService.getCartObservable().subscribe((res) => {
+      this.showProduct = res.items;
+      console.log(this.showProduct);
+
+      this.totalAmout = this.cartService.getCart().totalPrice;
     });
 
     //form
@@ -31,13 +40,13 @@ export class CartPageComponent implements OnInit {
     });
   }
 
-  deleteItem(item: Product) {
-    this.apiService.removeFromCart(item);
+  deleteItem(item: CartItem) {
+    this.cartService.removeFromCart(item.product.id);
   }
 
-  emptyCart() {
-    this.apiService.removeAllItems();
-  }
+  // emptyCart() {
+  //   this.apiService.removeAllItems();
+  // }
 
   cancel() {
     this.addressForm = false;

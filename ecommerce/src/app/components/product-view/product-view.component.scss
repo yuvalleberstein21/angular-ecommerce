@@ -20,10 +20,25 @@
   right: 0;
 }
 
+@media only screen and (max-width: 390px) {
+  .text-content {
+    margin-right: 3rem;
+    flex-direction: column;
+  }
+  .display-2 {
+    line-height: 6rem;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   #billboard .banner-content {
     margin-top: 210px;
   }
+
+  .display-2 {
+    line-height: 6rem;
+  }
+
   #billboard .image-holder {
     margin-top: -390px;
     opacity: 0.3;
@@ -38,6 +53,10 @@
   #company-services .icon-box {
     flex-wrap: wrap;
   }
+}
+
+.display-2 {
+  line-height: 4rem;
 }
 .icon-box .icon-box-icon svg {
   width: 26px;
