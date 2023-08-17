@@ -1,0 +1,24 @@
+@media only screen and (max-width: 390px) {
+  .text-content {
+    margin-right: 3rem;
+    flex-direction: column;
+  }
+  .display-2 {
+    line-height: 6rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #billboard .banner-content {
+    margin-top: 210px;
+  }
+
+  .display-2 {
+    line-height: 6rem;
+  }
+}
+.display-2 {
+  line-height: 4rem;
+}
+.text-content h2 {
+  font-size: 50px;
+}

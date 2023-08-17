@@ -22,8 +22,19 @@
               <div class="row">{{ item.product.category }}</div>
             </div>
             <div class="col">
-              <button class="minus-btn">-</button><a class="number-input">1</a
-              ><button class="plus-btn">+</button>
+              <div>
+                <select
+                  #quantitySelect
+                  [value]="item.quantity"
+                  (change)="changeQuantity(item, quantitySelect.value)"
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
             </div>
             <div class="col d-flex justify-content-between controler-btn">
               <span class="mt-2">{{ item.price | currency }}</span
@@ -40,8 +51,8 @@
         </div>
 
         <div class="back-to-shop">
-          <a routerLink="/">&leftarrow;</a
-          ><span class="text-muted">Back to shop</span>
+          <a>&leftarrow;</a
+          ><span class="text-muted" routerLink="/">Back to shop</span>
         </div>
       </div>
       <div class="col-md-4 summary">

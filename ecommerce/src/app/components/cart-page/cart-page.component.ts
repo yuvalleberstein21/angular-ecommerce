@@ -1,7 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { Product } from '../../shared/models/productModal';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CartItem } from 'src/app/shared/models/CartItem';
 
@@ -13,8 +11,6 @@ import { CartItem } from 'src/app/shared/models/CartItem';
 export class CartPageComponent implements OnInit {
   showProduct: any = [];
   public totalAmout: number = 0;
-  public addressForm = false;
-  public counter: any | number = 1;
   myForm: FormGroup | any;
 
   constructor(private cartService: CartService, private renderer: Renderer2) {}
@@ -26,23 +22,15 @@ export class CartPageComponent implements OnInit {
 
       this.totalAmout = this.cartService.getCart().totalPrice;
     });
-
-    //form
-    this.myForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      name: new FormControl('', [Validators.required]),
-      mobile: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-    });
   }
 
   deleteItem(item: CartItem) {
     this.cartService.removeFromCart(item.product.id);
   }
 
-  cancel() {
-    this.addressForm = false;
-    this.myForm.reset();
+  changeQuantity(cartItem: CartItem, quantityInString: string) {
+    const quantity = parseInt(quantityInString);
+    this.cartService.changeQuantity(cartItem.product.id, quantity);
   }
 
   onSubmit() {

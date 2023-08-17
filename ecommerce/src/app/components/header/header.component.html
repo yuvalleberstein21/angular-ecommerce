@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg sticky-top bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">MiniStore</a>
+    <a class="navbar-brand" routerLink="/">
+      <img src="../assets/main-logo.png" alt="" />
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -32,7 +34,7 @@
             class="nav-link active"
             style="font-size: 15px; font-weight: 500"
             aria-current="page"
-            routerLink="/"
+            routerLink="/products"
             >PRODUCTS</a
           >
         </li>
@@ -55,6 +57,11 @@
           >
         </li>
       </ul>
+    </div>
+
+    <div
+      style="display: flex; justify-content: space-between; align-items: center"
+    >
       <li
         *ngIf="!userIsAuthenticated; else userIsLoggedIn"
         class="nav-item d-flex p-2"
@@ -64,25 +71,41 @@
         <i style="cursor: pointer" class="fa-solid fa-user me-auto mt-1"></i>
       </li>
 
-      <ng-template #userIsLoggedIn>
-        <li
-          class="nav-item d-flex p-2"
-          style="cursor: pointer; font-size: 15px; font-weight: 500"
-          routerLink="/login-page"
-        >
-          <i style="cursor: pointer" class="fa-solid fa-user me-auto mt-1"></i>
-          {{ userName | async }}
-        </li>
-      </ng-template>
+      <div>
+        <ng-template #userIsLoggedIn>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              style="
+                font-size: 15px;
+                font-weight: 500;
+                color: rgb(188, 12, 12);
+                cursor: pointer;
+              "
+              aria-current="page"
+              >LOGOUT</a
+            >
+          </li>
+        </ng-template>
 
-      <li
-        class="nav-item d-flex p-2"
-        style="cursor: pointer"
-        routerLink="/cart-page"
-      >
-        <i style="cursor: pointer" class="fas fa-shopping-cart me-auto mt-1"></i
-        >&nbsp; {{ cartQuantity }}
-      </li>
+        <li
+          class="nav-item"
+          style="
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            bottom: 12px;
+            cursor: pointer;
+          "
+          routerLink="/cart-page"
+        >
+          <i
+            class="fa-solid fa-bag-shopping fa-lg"
+            style="position: absolute; right: 20; bottom: 5px"
+          ></i
+          >{{ cartQuantity }}
+        </li>
+      </div>
     </div>
   </div>
 </nav>

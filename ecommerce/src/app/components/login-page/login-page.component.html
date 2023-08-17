@@ -1,6 +1,7 @@
 <div class="container">
   <div class="form-container">
-    <form class="form">
+    <form class="form" [formGroup]="LoginForm">
+      <h2>LOGIN</h2>
       <div class="flex-column">
         <label>Email </label>
       </div>
@@ -17,7 +18,13 @@
             ></path>
           </g>
         </svg>
-        <input placeholder="Enter your Email" class="input" type="text" />
+        <input
+          required
+          placeholder="Enter your Email"
+          class="input"
+          type="text"
+          formControlName="email"
+        />
       </div>
 
       <div class="flex-column">
@@ -38,13 +45,34 @@
           ></path>
         </svg>
         <input
+          required
           placeholder="Enter your Password"
           class="input"
           type="password"
+          formControlName="password"
         />
       </div>
 
-      <button class="button-submit">Sign In</button>
+      <p
+        style="
+          color: red;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        {{ errorMessage }}
+      </p>
+
+      <button
+        type="submit"
+        class="button-submit"
+        (click)="Login()"
+        [disabled]="this.LoginForm.invalid"
+      >
+        Sign In
+      </button>
+
       <p class="p">
         Don't have an account?
         <span class="span" routerLink="/register-page">Sign Up</span>

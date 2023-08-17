@@ -135,14 +135,16 @@ hr {
 form {
   padding: 2vh 0;
 }
+
 select {
-  border: 1px solid rgba(0, 0, 0, 0.137);
-  padding: 1.5vh 1vh;
-  margin-bottom: 4vh;
+  width: 3rem;
   outline: none;
-  width: 100%;
-  background-color: rgb(247, 247, 247);
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  font-size: 1.1rem;
+  font-weight: 100;
 }
+
 input {
   border: 1px solid rgba(0, 0, 0, 0.137);
   padding: 1vh;

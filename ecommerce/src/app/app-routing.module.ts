@@ -8,6 +8,7 @@ import { CheckoutPageComponent } from './components/checkout-page/checkout-page.
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { GuardService } from './shared/services/guard.service';
+import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,10 @@ export const routes: Routes = [
   {
     path: 'register-page',
     component: RegisterPageComponent,
+  },
+  {
+    path: 'products',
+    component: AllProductsPageComponent,
   },
 ];
 
