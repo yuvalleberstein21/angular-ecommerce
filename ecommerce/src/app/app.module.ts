@@ -24,7 +24,7 @@ import {
   GoogleLoginProvider,
   GoogleSigninButtonModule,
 } from '@abacritt/angularx-social-login';
-import { RouterModule } from '@angular/router';
+
 import { SaleSectionComponent } from './utils/sale-section/sale-section.component';
 import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
 

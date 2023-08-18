@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const productsRoutes = require('./routes/productsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
+const ordersRoutes = require('./routes/ordersRoutes');
 const session = require('express-session');
 
 
@@ -28,6 +29,7 @@ app.use(
 
 app.use('/api', productsRoutes);
 app.use('/api', usersRoutes);
+app.use('/api', ordersRoutes);
 
 
 
