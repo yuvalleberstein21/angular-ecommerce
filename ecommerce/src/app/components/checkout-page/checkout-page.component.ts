@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { OrderService } from 'src/app/shared/services/order.service';
 
 @Component({
   selector: 'app-checkout-page',
@@ -8,23 +10,52 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CheckoutPageComponent implements OnInit {
   showSteps: boolean = true;
-  public addressForm = false;
-  myForm: FormGroup | any;
+  addressForm: FormGroup | any;
+  myData: any;
+  userId!: number;
 
-  constructor() {}
+  constructor(private OrderService: OrderService, private router: Router) {}
+
   ngOnInit(): void {
-    //form
-    this.myForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      name: new FormControl('', [Validators.required]),
-      mobile: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
+    //getIdFromStorage
+    const userString = sessionStorage.getItem('user');
+    if (userString) {
+      const user = JSON.parse(userString);
+      if (user.id) {
+        this.userId = user.id;
+      }
+    }
+    //Form input validation
+    this.addressForm = new FormGroup({
+      city: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required]),
+      state: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
+      phone: new FormControl('', [Validators.required]),
+    });
+
+    //Get countries list
+    this.OrderService.getCountriesList().subscribe((res: any) => {
+      const countries = [];
+      for (let i = 0; i < res.length; i++) {
+        const country = res[i];
+        countries.push({ text: country.text, value: country.value });
+      }
+      this.myData = countries;
     });
   }
 
   onSubmit() {
-    this.myForm.value;
-    console.log(this.myForm.value);
-    this.myForm.reset();
+    this.addressForm.value;
+
+    console.log(this.addressForm.value);
+
+    this.OrderService.getOrder(this.userId, this.addressForm.value).subscribe(
+      (res: any) => {
+        sessionStorage.setItem('address', JSON.stringify(res));
+        this.addressForm.reset();
+        this.router.navigate(['/order-payment']);
+      }
+    );
   }
 }

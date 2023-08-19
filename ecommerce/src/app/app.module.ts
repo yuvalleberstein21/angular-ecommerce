@@ -27,7 +27,8 @@ import {
 
 import { SaleSectionComponent } from './utils/sale-section/sale-section.component';
 import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
-
+import { MbscModule } from '@mobiscroll/angular';
+import { OrderPaymentComponent } from './components/order-payment/order-payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { AllProductsPageComponent } from './components/all-products-page/all-pro
     RegisterPageComponent,
     SaleSectionComponent,
     AllProductsPageComponent,
+    OrderPaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,7 @@ import { AllProductsPageComponent } from './components/all-products-page/all-pro
     ReactiveFormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
+    MbscModule,
   ],
   providers: [
     {

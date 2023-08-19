@@ -26,11 +26,9 @@ export class HeaderComponent implements OnInit {
       sessionStorage.getItem('user') || 'false'
     );
 
-    console.log(isAuthenticated);
-
     if (isAuthenticated) {
       this.userIsAuthenticated.next(true);
-      console.log(isAuthenticated);
+
       this.userName.next(isAuthenticated.name);
     }
   }

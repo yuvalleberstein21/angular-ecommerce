@@ -9,6 +9,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { GuardService } from './shared/services/guard.service';
 import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
+import { OrderPaymentComponent } from './components/order-payment/order-payment.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,11 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutPageComponent,
+    canActivate: [GuardService],
+  },
+  {
+    path: 'order-payment',
+    component: OrderPaymentComponent,
     canActivate: [GuardService],
   },
   {
