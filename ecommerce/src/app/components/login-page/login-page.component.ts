@@ -55,7 +55,6 @@ export class LoginPageComponent {
   }
 
   Login() {
-    this.LoginForm.value;
     this.authService.login(this.LoginForm.value).subscribe((res) => {
       console.log(res);
       if (res.message) {
@@ -64,8 +63,9 @@ export class LoginPageComponent {
       }
       this.userIsAuthenticated.next(true);
       this.userName.next(res.data[0].name);
-      console.log(res.data[0].name);
-      sessionStorage.setItem('user', JSON.stringify(res.data[0]));
+
+      // sessionStorage.setItem('user', JSON.stringify(res.data[0]));
+      this.authService.setToSessionStorage(res.data[0]);
       this.router.navigate(['/']);
     });
   }

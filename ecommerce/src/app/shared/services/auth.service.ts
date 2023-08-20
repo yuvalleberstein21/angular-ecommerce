@@ -12,10 +12,20 @@ export class AuthService implements OnInit {
   ngOnInit(): void {}
 
   register(user: User): Observable<any> {
-    return this.httpClient.post<any>('http://localhost:5001/register', user);
+    return this.httpClient.post<any>(
+      'http://localhost:5001/api/register',
+      user
+    );
   }
 
   login(user: User): Observable<any> {
     return this.httpClient.post<any>(`http://localhost:5001/api/login`, user);
+  }
+
+  public setToSessionStorage(user: User): void {
+    sessionStorage.setItem('user', JSON.stringify(user));
+  }
+  public getFromSessionStorage() {
+    return JSON.parse(sessionStorage.getItem('user') || '');
   }
 }

@@ -1,12 +1,17 @@
 <div class="container">
   <div class="form-container">
-    <form class="form">
+    <form class="form" [formGroup]="registerForm">
       <div class="flex-column">
         <label>Full Name </label>
       </div>
       <div class="inputForm">
         <i class="fa-solid fa-user"></i>
-        <input placeholder="Enter your Name" class="input" type="text" />
+        <input
+          placeholder="Enter your Name"
+          class="input"
+          type="text"
+          formControlName="name"
+        />
       </div>
 
       <div class="flex-column">
@@ -25,7 +30,12 @@
             ></path>
           </g>
         </svg>
-        <input placeholder="Enter your Email" class="input" type="text" />
+        <input
+          placeholder="Enter your Email"
+          class="input"
+          type="text"
+          formControlName="email"
+        />
       </div>
 
       <div class="flex-column">
@@ -49,10 +59,28 @@
           placeholder="Enter your Password"
           class="input"
           type="password"
+          formControlName="password"
         />
       </div>
 
-      <button class="button-submit">Sign In</button>
+      <p
+        style="
+          color: red;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        {{ errorMessage }}
+      </p>
+
+      <button
+        class="button-submit"
+        (click)="Register()"
+        [disabled]="this.registerForm.invalid"
+      >
+        Sign In
+      </button>
       <p class="p">
         Already have an account?
         <span class="span" routerLink="/login-page">Sign In</span>

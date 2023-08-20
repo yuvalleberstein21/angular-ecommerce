@@ -31,7 +31,6 @@ export class ProductViewComponent implements OnInit {
   displayProduct() {
     this.apiService.getProduct().subscribe((res) => {
       this.data = res;
-      console.log(this.data);
       this.filterProducts = this.data.filter((product: Product) => {
         return this.filteredCategories.includes(product.category);
       });
