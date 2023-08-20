@@ -1,0 +1,21 @@
+.card {
+  height: 100%;
+}
+.card-text {
+  color: black;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.card-text span {
+  color: rgb(112, 112, 112);
+}
+.card-text-title,
+.card-text-title span {
+  color: #588a9f;
+  font-size: 20px;
+}
+h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

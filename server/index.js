@@ -4,8 +4,14 @@ const app = express();
 const productsRoutes = require('./routes/productsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
 const ordersRoutes = require('./routes/ordersRoutes');
+const bodyparser = require('body-parser');
 const session = require('express-session');
+const stripe = require('stripe')("sk_test_51Nh66tLzupgPvagx6ffFsi9PUdFNfVKqzqLnRYB02GIXQXoNTs1SQQ6HAtY8sj7OuwoWamAKM7jKhQXoBl7EGGhk004rt83wBb");
 
+app.use(bodyparser.urlencoded({ extended: false }));
+
+
+app.use(bodyparser.json())
 
 app.use(cors({
     origin: 'http://localhost:4200',
@@ -25,6 +31,38 @@ app.use(
         cookie: { secure: false }, // Change to true if using HTTPS
     })
 );
+
+app.post('/api/payment', async (req, res) => {
+    try {
+        token = req.body.token;
+        const customer = stripe.customers.create({
+            email: 'example@example',
+            source: token.id
+        }).then((customer) => {
+            console.log(customer);
+            return stripe.charges.create({
+                amount: 1000,
+                description: "Test purchase order payment method with customer id",
+                currency: "USD",
+                customer: customer.id
+
+            });
+        }).then((charge) => {
+            console.log(charge);
+            res.json({
+                data: "success",
+            });
+        })
+            .catch((error) => {
+                res.json({
+                    data: "failure",
+                });
+            });
+        return true;
+    } catch (error) {
+        return false;
+    }
+});
 
 
 app.use('/api', productsRoutes);

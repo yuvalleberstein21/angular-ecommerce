@@ -25,6 +25,17 @@ export class HeaderComponent implements OnInit {
     const isAuthenticated = JSON.parse(
       sessionStorage.getItem('user') || 'false'
     );
+    const passCheckout = sessionStorage.getItem('Cart');
+    if (passCheckout) {
+      const cartData = JSON.parse(passCheckout);
+      if (cartData && cartData.items && cartData.items.length > 0) {
+        console.log('There are items in the cart.');
+      } else {
+        console.log('The cart is empty.');
+      }
+    } else {
+      console.log('The cart data is not available.');
+    }
 
     if (isAuthenticated) {
       this.userIsAuthenticated.next(true);

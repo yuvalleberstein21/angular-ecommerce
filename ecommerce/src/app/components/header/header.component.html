@@ -63,7 +63,7 @@
       style="display: flex; justify-content: space-between; align-items: center"
     >
       <li
-        *ngIf="!userIsAuthenticated; else userIsLoggedIn"
+        *ngIf="!(userIsAuthenticated | async); else userIsLoggedIn"
         class="nav-item d-flex p-2"
         style="cursor: pointer; font-size: 15px; font-weight: 500"
         routerLink="/login-page"

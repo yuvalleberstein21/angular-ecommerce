@@ -25,6 +25,10 @@ export class CheckoutPageComponent implements OnInit {
         this.userId = user.id;
       }
     }
+    const address = sessionStorage.getItem('address');
+    if (address) {
+      this.router.navigate(['/order-payment']);
+    }
     //Form input validation
     this.addressForm = new FormGroup({
       city: new FormControl('', [Validators.required]),

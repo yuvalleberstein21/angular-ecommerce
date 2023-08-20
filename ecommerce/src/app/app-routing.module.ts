@@ -10,6 +10,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { GuardService } from './shared/services/guard.service';
 import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
 import { OrderPaymentComponent } from './components/order-payment/order-payment.component';
+import { GuardCheckoutService } from './shared/services/guardCheckout.service';
 
 export const routes: Routes = [
   {
@@ -27,17 +28,17 @@ export const routes: Routes = [
   {
     path: 'order-page',
     component: OrderPageComponent,
-    canActivate: [GuardService],
+    canActivate: [GuardService, GuardCheckoutService],
   },
   {
     path: 'checkout',
     component: CheckoutPageComponent,
-    canActivate: [GuardService],
+    canActivate: [GuardService, GuardCheckoutService],
   },
   {
     path: 'order-payment',
     component: OrderPaymentComponent,
-    canActivate: [GuardService],
+    canActivate: [GuardService, GuardCheckoutService],
   },
   {
     path: 'login-page',

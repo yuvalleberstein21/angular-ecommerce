@@ -29,16 +29,16 @@ export class LoginPageComponent {
   ) {}
 
   ngOnInit() {
-    this.socialService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = user != null;
-      if (user) {
-        sessionStorage.setItem('user', JSON.stringify(user));
-        this.userIsAuthenticated.next(true); // Notify authentication state change
-        this.userName.next(user.name); // Update user name
-        this.router.navigate(['/']);
-      }
-    });
+    // this.socialService.authState.subscribe((user) => {
+    //   this.user = user;
+    //   this.loggedIn = user != null;
+    //   if (user) {
+    //     sessionStorage.setItem('user', JSON.stringify(user));
+    //     this.userIsAuthenticated.next(true); // Notify authentication state change
+    //     this.userName.next(user.name); // Update user name
+    //     this.router.navigate(['/']);
+    //   }
+    // });
 
     //form
     this.LoginForm = new FormGroup({

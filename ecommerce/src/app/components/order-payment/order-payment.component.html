@@ -1,1 +1,83 @@
-<p>order-payment works!</p>
+<div class="container mt-3 p-3">
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+      <div class="card">
+        <div class="card-title d-flex justify-content-center">
+          <h3
+            class="p-2"
+            style="font-size: 25px; font-weight: bold; color: rgb(37, 37, 37)"
+          >
+            My Shipping address
+          </h3>
+        </div>
+        <div class="card-body" *ngFor="let o of order">
+          <p class="card-text">
+            City: <span>{{ o.city }}</span>
+          </p>
+          <p class="card-text">
+            Street: <span>{{ o.street }}</span>
+          </p>
+          <p class="card-text">
+            State: <span>{{ o.state }}</span>
+          </p>
+          <p class="card-text">
+            Country: <span>{{ o.country }}</span>
+          </p>
+          <p class="card-text">
+            Mobile: <span>{{ o.phone }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="card">
+        <div class="card-title d-flex justify-content-center">
+          <h3
+            class="p-1"
+            style="font-size: 25px; font-weight: bold; color: rgb(37, 37, 37)"
+          >
+            My Cart
+          </h3>
+        </div>
+        <div class="card-body" *ngFor="let c of cart">
+          <div class="card-text">
+            <p class="card-text-title">
+              <span>{{ c.product.title }}</span>
+            </p>
+
+            Qty: <span>{{ c.quantity }}</span>
+            <br />
+
+            Price: <span>{{ c.product.price | currency }}</span>
+          </div>
+        </div>
+        <h4>
+          Total Price:
+          <span class="card-text">&nbsp;{{ totalAmout | currency }}</span>
+        </h4>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <div class="card">
+        <div class="card-title d-flex justify-content-center">
+          <h3
+            class="p-2"
+            style="font-size: 25px; font-weight: bold; color: rgb(37, 37, 37)"
+          >
+            My Shipping address
+          </h3>
+        </div>
+        <button class="btn btn-primary" (click)="insertPaymentDB()">Pay</button>
+        <button (click)="initializePayment(totalAmout)">Pay</button>
+      </div>
+      <div *ngIf="success">
+        <h2>Your payment is successfull</h2>
+      </div>
+      <div *ngIf="failure">
+        <h2>Payment Error</h2>
+      </div>
+    </div>
+  </div>
+</div>
