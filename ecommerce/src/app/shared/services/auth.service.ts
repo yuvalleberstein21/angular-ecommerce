@@ -22,10 +22,14 @@ export class AuthService implements OnInit {
     return this.httpClient.post<any>(`http://localhost:5001/api/login`, user);
   }
 
+  logout() {
+    return this.httpClient.get(`http://localhost:5001/api/logout`);
+  }
+
   public setToSessionStorage(user: User): void {
     sessionStorage.setItem('user', JSON.stringify(user));
   }
-  public getFromSessionStorage() {
-    return JSON.parse(sessionStorage.getItem('user') || '');
+  public getFromSessionStorage(user: string) {
+    return sessionStorage.getItem(user);
   }
 }

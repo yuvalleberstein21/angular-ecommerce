@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ApiService } from 'src/app/shared/services/api.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
@@ -15,7 +15,10 @@ export class HeaderComponent implements OnInit {
   );
   userName: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService
+  ) {
     this.cartService.getCartObservable().subscribe((res) => {
       this.cartQuantity = res.totalCount;
     });
@@ -29,12 +32,7 @@ export class HeaderComponent implements OnInit {
     if (passCheckout) {
       const cartData = JSON.parse(passCheckout);
       if (cartData && cartData.items && cartData.items.length > 0) {
-        console.log('There are items in the cart.');
-      } else {
-        console.log('The cart is empty.');
       }
-    } else {
-      console.log('The cart data is not available.');
     }
 
     if (isAuthenticated) {
@@ -42,5 +40,12 @@ export class HeaderComponent implements OnInit {
 
       this.userName.next(isAuthenticated.name);
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.userIsAuthenticated.next(false);
+    this.cartQuantity = 0;
+    sessionStorage.clear();
   }
 }

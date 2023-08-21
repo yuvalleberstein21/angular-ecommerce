@@ -19,4 +19,10 @@ export class ApiService {
   public getProductById(id: string) {
     return this.http.get<Product>(`http://localhost:5001/api/getProduct/${id}`);
   }
+
+  public getProductCategories() {
+    return this.http.get<Product[]>(
+      'http://localhost:5001/api/getProductCategories'
+    );
+  }
 }

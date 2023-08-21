@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/Order';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { OrderService } from 'src/app/shared/services/order.service';
 
@@ -21,11 +22,12 @@ export class OrderPaymentComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    const userString = sessionStorage.getItem('user');
+    const userString = this.authService.getFromSessionStorage('user');
     if (userString) {
       const user = JSON.parse(userString);
       this.userEmail = user.email;

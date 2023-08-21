@@ -47,14 +47,14 @@ exports.login = async (req, res) => {
 };
 
 // // LOGOUT AUTH 
-// app.get('/logout', (req, res) => {
-//     // Destroy the session to log out the user
-//     req.session.destroy((err) => {
-//         if (err) {
-//             console.log(err);
-//             res.send({ message: 'Error occurred during logout' });
-//         } else {
-//             res.send({ message: 'Logged out successfully' });
-//         }
-//     });
-// });
+exports.logout = async (req, res) => {
+
+    await req.session.destroy((err) => {
+        if (err) {
+            console.log(err);
+            res.send({ message: 'Error occurred during logout' });
+        } else {
+            res.send({ message: 'Logged out successfully' });
+        }
+    });
+}

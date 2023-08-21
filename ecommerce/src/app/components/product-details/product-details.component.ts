@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   showRemove: boolean = false;
   filterSimilarProducts!: Product[];
   similarProducts!: Product[];
+  isLoading: boolean = true;
 
   constructor(
     private apiService: ApiService,
@@ -33,6 +34,7 @@ export class ProductDetailsComponent implements OnInit {
     this.apiService.getProductById(productId).subscribe((res: any) => {
       this.productData = res;
       this.getAllProducts();
+      this.isLoading = false;
     });
   }
 
@@ -43,6 +45,7 @@ export class ProductDetailsComponent implements OnInit {
       this.similarProducts = this.filterSimilarProducts.filter(
         (product) => product.category === selectedCategory
       );
+      this.isLoading = false;
       return this.similarProducts;
     });
   }

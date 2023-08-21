@@ -18,7 +18,6 @@ export class CartPageComponent implements OnInit {
     this.renderer.setProperty(document.body, 'scrollTop', 0);
     this.cartService.getCartObservable().subscribe((res) => {
       this.showProduct = res.items;
-      console.log(this.showProduct);
 
       this.totalAmout = this.cartService.getCart().totalPrice;
     });
@@ -35,7 +34,6 @@ export class CartPageComponent implements OnInit {
 
   onSubmit() {
     this.myForm.value;
-    console.log(this.myForm.value);
     this.myForm.reset();
   }
 }

@@ -9,6 +9,13 @@ exports.getAllProducts = async (req, res) => {
     });
 };
 
+exports.getProductCategories = async (req, res) => {
+    await con.query('SELECT * FROM categories;', (err, result) => {
+        if (err) throw err;
+        res.send(result);
+    });
+}
+
 exports.getProductByID = async (req, res) => {
     const id = req.params.id;
     await con.query(`SELECT products.id, products.title, products.image, products.images, products.description, products.price, products.stock, categories.title AS category

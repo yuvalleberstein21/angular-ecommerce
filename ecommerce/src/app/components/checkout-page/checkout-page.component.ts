@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { OrderService } from 'src/app/shared/services/order.service';
 
 @Component({
@@ -14,11 +15,15 @@ export class CheckoutPageComponent implements OnInit {
   myData: any;
   userId!: number;
 
-  constructor(private OrderService: OrderService, private router: Router) {}
+  constructor(
+    private OrderService: OrderService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     //getIdFromStorage
-    const userString = sessionStorage.getItem('user');
+    const userString = this.authService.getFromSessionStorage('user');
     if (userString) {
       const user = JSON.parse(userString);
       if (user.id) {
@@ -50,10 +55,6 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   onSubmit() {
-    this.addressForm.value;
-
-    console.log(this.addressForm.value);
-
     this.OrderService.getOrder(this.userId, this.addressForm.value).subscribe(
       (res: any) => {
         sessionStorage.setItem('address', JSON.stringify(res));

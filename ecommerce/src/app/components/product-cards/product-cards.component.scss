@@ -8,6 +8,15 @@
   text-transform: uppercase;
   opacity: 0;
 }
+.product-card {
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+  height: 350px;
+}
+.product-card:hover {
+  transform: scale(1.02);
+}
 .btn {
   --color: #72aec8;
   --color2: white;

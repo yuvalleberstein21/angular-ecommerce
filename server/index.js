@@ -39,7 +39,7 @@ app.post('/api/payment', async (req, res) => {
             email: 'example@example',
             source: token.id
         }).then((customer) => {
-            console.log(customer);
+
             return stripe.charges.create({
                 amount: 1000,
                 description: "Test purchase order payment method with customer id",
@@ -48,7 +48,6 @@ app.post('/api/payment', async (req, res) => {
 
             });
         }).then((charge) => {
-            console.log(charge);
             res.json({
                 data: "success",
             });
