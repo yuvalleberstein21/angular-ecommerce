@@ -16,14 +16,6 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
-import {
-  SocialLoginModule,
-  SocialAuthServiceConfig,
-} from '@abacritt/angularx-social-login';
-import {
-  GoogleLoginProvider,
-  GoogleSigninButtonModule,
-} from '@abacritt/angularx-social-login';
 
 import { SaleSectionComponent } from './utils/sale-section/sale-section.component';
 import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
@@ -53,8 +45,6 @@ import { OrderPaymentComponent } from './components/order-payment/order-payment.
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SocialLoginModule,
-    GoogleSigninButtonModule,
     MbscModule,
   ],
   providers: [
@@ -62,18 +52,8 @@ import { OrderPaymentComponent } from './components/order-payment/order-payment.
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '831314523110-4eqkole9p8bkdttk11u49ee7813a1pth.apps.googleusercontent.com'
-            ),
-          },
-        ],
-        onError: (err) => {
-          console.error(err);
-        },
-      } as SocialAuthServiceConfig,
+        providers: [],
+      },
     },
   ],
   bootstrap: [AppComponent],

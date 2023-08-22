@@ -37,8 +37,6 @@ export class HeaderComponent implements OnInit {
 
     if (isAuthenticated) {
       this.userIsAuthenticated.next(true);
-
-      this.userName.next(isAuthenticated.name);
     }
   }
 

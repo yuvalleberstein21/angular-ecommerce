@@ -56,9 +56,12 @@ export class OrderPaymentComponent implements OnInit {
         .insertOrder(this.userId, this.finalProductId, this.finalQty)
         .subscribe((response: any) => {
           if (response.affectedRows > 0) {
-            alert('Order Placed Successfully');
             sessionStorage.removeItem('Cart');
             this.router.navigate(['/']);
+            alert('Order Placed Successfully');
+            setInterval(function () {
+              location.reload();
+            }, 1000);
           }
         });
     }
