@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductViewComponent } from './components/product-view/product-view.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { CartPageComponent } from './components/cart-page/cart-page.component';
-import { OrderPageComponent } from './components/order-page/order-page.component';
-import { CheckoutPageComponent } from './components/checkout-page/checkout-page.component';
-import { LoginPageComponent } from './components/login-page/login-page.component';
-import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { ProductViewComponent } from './pages/product-view/product-view.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { GuardService } from './shared/services/guard.service';
-import { AllProductsPageComponent } from './components/all-products-page/all-products-page.component';
-import { OrderPaymentComponent } from './components/order-payment/order-payment.component';
+import { AllProductsPageComponent } from './pages/all-products-page/all-products-page.component';
+import { OrderPaymentComponent } from './pages/order-payment/order-payment.component';
 import { GuardCheckoutService } from './shared/services/guardCheckout.service';
 
 export const routes: Routes = [
