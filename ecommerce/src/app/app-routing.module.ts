@@ -26,7 +26,7 @@ export const routes: Routes = [
     component: CartPageComponent,
   },
   {
-    path: 'order-page',
+    path: 'thankyou-page',
     component: OrderPageComponent,
     canActivate: [GuardService, GuardCheckoutService],
   },

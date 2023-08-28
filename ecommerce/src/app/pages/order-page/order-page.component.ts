@@ -14,11 +14,10 @@ export class OrderPageComponent implements OnInit {
   public totalAmount: number = 0;
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.router.navigate(['/']);
-    //   this.cartService.removeFromCart();
-    // }, 4000);
-    //total amount
-    // this.totalAmount = this.apiService.calculatePrice();
+    setTimeout(() => {
+      this.router.navigate(['/']);
+      sessionStorage.removeItem('Cart');
+      location.reload();
+    }, 4000);
   }
 }

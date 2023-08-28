@@ -21,6 +21,7 @@ import { SaleSectionComponent } from './utils/sale-section/sale-section.componen
 import { AllProductsPageComponent } from './pages/all-products-page/all-products-page.component';
 import { MbscModule } from '@mobiscroll/angular';
 import { OrderPaymentComponent } from './pages/order-payment/order-payment.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { OrderPaymentComponent } from './pages/order-payment/order-payment.compo
     HttpClientModule,
     ReactiveFormsModule,
     MbscModule,
+
   ],
   providers: [
     {
